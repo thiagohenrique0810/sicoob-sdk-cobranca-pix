@@ -262,16 +262,12 @@ class CobrancaService
      * @throws SicoobException
      * @throws ValidationException
      */
-    public function alterarBoleto(Boleto $boleto)
+    public function alterarBoleto($nossoNumero, array $dadosAlteracao)
     {
-        // Valida os dados do boleto
-        $boleto->validate();
-        
-        $url = $this->config->getBaseUrl('cobranca') . '/boletos';
-        $data = ['boleto' => $boleto->toArray()];
+        $url = $this->config->getBaseUrl('cobranca') . '/boletos/' . $nossoNumero;
         
         try {
-            $response = $this->httpClient->put($url, $data);
+            $response = $this->httpClient->patch($url, $dadosAlteracao);
             return $response;
         } catch (SicoobException $e) {
             throw new SicoobException('Erro ao alterar boleto: ' . $e->getMessage(), 0, $e);

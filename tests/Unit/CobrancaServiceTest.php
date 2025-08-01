@@ -51,7 +51,7 @@ class CobrancaServiceTest
                 'endereco' => 'Rua das Flores, 123',
                 'bairro' => 'Centro',
                 'cidade' => 'São Paulo',
-                'cep' => '01234-567',
+                'cep' => '01234567',
                 'uf' => 'SP',
                 'email' => 'joao@email.com'
             ]);
@@ -105,12 +105,12 @@ class CobrancaServiceTest
         
         try {
             $pagador = new Pagador([
-                'numeroCpfCnpj' => '12345678901',
+                'numeroCpfCnpj' => '52998224725',
                 'nome' => 'João da Silva',
                 'endereco' => 'Rua das Flores, 123',
                 'bairro' => 'Centro',
                 'cidade' => 'São Paulo',
-                'cep' => '01234-567',
+                'cep' => '01234567',
                 'uf' => 'SP',
                 'email' => 'joao@email.com'
             ]);
@@ -213,8 +213,6 @@ class CobrancaServiceTest
     {
         echo "Testando validação de CPF...\n";
         
-        $pagador = new Pagador();
-        
         // CPFs válidos
         $cpfsValidos = [
             '52998224725',
@@ -223,7 +221,17 @@ class CobrancaServiceTest
         ];
         
         foreach ($cpfsValidos as $cpf) {
-            $pagador->setNumeroCpfCnpj($cpf);
+            $pagador = new Pagador([
+                'numeroCpfCnpj' => $cpf,
+                'nome' => 'João da Silva',
+                'endereco' => 'Rua das Flores, 123',
+                'bairro' => 'Centro',
+                'cidade' => 'São Paulo',
+                'cep' => '01234567',
+                'uf' => 'SP',
+                'email' => 'joao@email.com'
+            ]);
+            
             try {
                 $pagador->validate();
                 echo "✅ CPF válido aceito: $cpf\n";
@@ -241,7 +249,17 @@ class CobrancaServiceTest
         ];
         
         foreach ($cpfsInvalidos as $cpf) {
-            $pagador->setNumeroCpfCnpj($cpf);
+            $pagador = new Pagador([
+                'numeroCpfCnpj' => $cpf,
+                'nome' => 'João da Silva',
+                'endereco' => 'Rua das Flores, 123',
+                'bairro' => 'Centro',
+                'cidade' => 'São Paulo',
+                'cep' => '01234567',
+                'uf' => 'SP',
+                'email' => 'joao@email.com'
+            ]);
+            
             try {
                 $pagador->validate();
                 echo "❌ CPF inválido aceito: $cpf\n";
@@ -260,8 +278,6 @@ class CobrancaServiceTest
     {
         echo "Testando validação de CNPJ...\n";
         
-        $pagador = new Pagador();
-        
         // CNPJs válidos
         $cnpjsValidos = [
             '11222333000181',
@@ -269,7 +285,17 @@ class CobrancaServiceTest
         ];
         
         foreach ($cnpjsValidos as $cnpj) {
-            $pagador->setNumeroCpfCnpj($cnpj);
+            $pagador = new Pagador([
+                'numeroCpfCnpj' => $cnpj,
+                'nome' => 'João da Silva',
+                'endereco' => 'Rua das Flores, 123',
+                'bairro' => 'Centro',
+                'cidade' => 'São Paulo',
+                'cep' => '01234567',
+                'uf' => 'SP',
+                'email' => 'joao@email.com'
+            ]);
+            
             try {
                 $pagador->validate();
                 echo "✅ CNPJ válido aceito: $cnpj\n";
@@ -286,7 +312,17 @@ class CobrancaServiceTest
         ];
         
         foreach ($cnpjsInvalidos as $cnpj) {
-            $pagador->setNumeroCpfCnpj($cnpj);
+            $pagador = new Pagador([
+                'numeroCpfCnpj' => $cnpj,
+                'nome' => 'João da Silva',
+                'endereco' => 'Rua das Flores, 123',
+                'bairro' => 'Centro',
+                'cidade' => 'São Paulo',
+                'cep' => '01234567',
+                'uf' => 'SP',
+                'email' => 'joao@email.com'
+            ]);
+            
             try {
                 $pagador->validate();
                 echo "❌ CNPJ inválido aceito: $cnpj\n";

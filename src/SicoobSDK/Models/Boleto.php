@@ -859,10 +859,30 @@ class Boleto
             $errors['codigoModalidade'] = 'Código da modalidade é obrigatório';
         }
         
+        if ($this->numeroContaCorrente === null || $this->numeroContaCorrente === '') {
+            $errors['numeroContaCorrente'] = 'Número da conta corrente é obrigatório';
+        }
+        
+        if (empty($this->codigoEspecieDocumento)) {
+            $errors['codigoEspecieDocumento'] = 'Código da espécie do documento é obrigatório';
+        }
+        
         if (empty($this->dataEmissao)) {
             $errors['dataEmissao'] = 'Data de emissão é obrigatória';
         } elseif (!$this->validarData($this->dataEmissao)) {
             $errors['dataEmissao'] = 'Data de emissão inválida';
+        }
+        
+        if (empty($this->seuNumero)) {
+            $errors['seuNumero'] = 'Seu número é obrigatório';
+        }
+        
+        if (empty($this->identificacaoEmissaoBoleto)) {
+            $errors['identificacaoEmissaoBoleto'] = 'Identificação da emissão do boleto é obrigatória';
+        }
+        
+        if (empty($this->identificacaoDistribuicaoBoleto)) {
+            $errors['identificacaoDistribuicaoBoleto'] = 'Identificação da distribuição do boleto é obrigatória';
         }
         
         if (empty($this->valor)) {
@@ -875,6 +895,22 @@ class Boleto
             $errors['dataVencimento'] = 'Data de vencimento é obrigatória';
         } elseif (!$this->validarData($this->dataVencimento)) {
             $errors['dataVencimento'] = 'Data de vencimento inválida';
+        }
+        
+        if (empty($this->numeroParcela)) {
+            $errors['numeroParcela'] = 'Número da parcela é obrigatório';
+        }
+        
+        if (empty($this->tipoDesconto)) {
+            $errors['tipoDesconto'] = 'Tipo de desconto é obrigatório';
+        }
+        
+        if (empty($this->tipoMulta)) {
+            $errors['tipoMulta'] = 'Tipo de multa é obrigatório';
+        }
+        
+        if (empty($this->tipoJurosMora)) {
+            $errors['tipoJurosMora'] = 'Tipo de juros de mora é obrigatório';
         }
         
         if (empty($this->pagador)) {
@@ -910,6 +946,37 @@ class Boleto
         
         if (!empty($this->dataJurosMora) && !$this->validarData($this->dataJurosMora)) {
             $errors['dataJurosMora'] = 'Data dos juros de mora inválida';
+        }
+        
+        // Validações de campos obrigatórios quando outros campos são preenchidos
+        if (!empty($this->dataMulta) && empty($this->valorMulta)) {
+            $errors['valorMulta'] = 'Valor da multa é obrigatório quando data da multa é informada';
+        }
+        
+        if (!empty($this->dataJurosMora) && empty($this->valorJurosMora)) {
+            $errors['valorJurosMora'] = 'Valor dos juros de mora é obrigatório quando data dos juros é informada';
+        }
+        
+        // Validações de descontos
+        if (!empty($this->dataPrimeiroDesconto) && empty($this->valorPrimeiroDesconto)) {
+            $errors['valorPrimeiroDesconto'] = 'Valor do primeiro desconto é obrigatório quando data é informada';
+        }
+        
+        if (!empty($this->dataSegundoDesconto) && empty($this->valorSegundoDesconto)) {
+            $errors['valorSegundoDesconto'] = 'Valor do segundo desconto é obrigatório quando data é informada';
+        }
+        
+        if (!empty($this->dataTerceiroDesconto) && empty($this->valorTerceiroDesconto)) {
+            $errors['valorTerceiroDesconto'] = 'Valor do terceiro desconto é obrigatório quando data é informada';
+        }
+        
+        // Validações de negativação e protesto
+        if (!empty($this->codigoNegativacao) && $this->codigoNegativacao == 2 && empty($this->numeroDiasNegativacao)) {
+            $errors['numeroDiasNegativacao'] = 'Número de dias para negativação é obrigatório quando código de negativação é 2';
+        }
+        
+        if (!empty($this->codigoProtesto) && $this->codigoProtesto == 1 && empty($this->numeroDiasProtesto)) {
+            $errors['numeroDiasProtesto'] = 'Número de dias para protesto é obrigatório quando código de protesto é 1';
         }
         
         if (!empty($errors)) {

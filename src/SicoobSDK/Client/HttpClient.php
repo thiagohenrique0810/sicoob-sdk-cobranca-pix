@@ -134,6 +134,20 @@ class HttpClient
     }
     
     /**
+     * Realiza uma requisição PATCH
+     * 
+     * @param string $url URL da requisição
+     * @param array $data Dados a serem enviados
+     * @param array $headers Headers adicionais
+     * @return array Resposta da API
+     * @throws SicoobException
+     */
+    public function patch($url, array $data = null, array $headers = [])
+    {
+        return $this->request('PATCH', $url, $data, $headers);
+    }
+    
+    /**
      * Realiza uma requisição DELETE
      * 
      * @param string $url URL da requisição
