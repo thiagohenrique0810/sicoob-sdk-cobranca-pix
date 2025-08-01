@@ -1,0 +1,50 @@
+# Dependências do Composer
+/vendor/
+composer.lock
+
+# Arquivos de certificados (por segurança)
+/certs/
+*.pem
+*.p12
+*.pfx
+
+# Arquivos de configuração com dados sensíveis
+config.php
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+/logs/
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.cache
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de build
+/build/
+/dist/
+
+# Arquivos de teste
+/coverage/
+.phpunit.result.cache
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Arquivos de configuração local
+config.local.php 
