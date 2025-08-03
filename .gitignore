@@ -1,73 +1,37 @@
-# Dependências
+# Composer
 /vendor/
-/node_modules/
+composer.lock
 
-# Arquivos de ambiente
-.env
-.env.local
-.env.production
-.env.testing
-
-# Certificados e credenciais
-/certificados/*.pem
-/certificados/*.key
-/certificados/*.crt
-/certificados/*.p12
-/certificados/client_secret*.txt
-/certificados/private_key*.txt
-
-# Logs
-*.log
-/logs/
-/var/log/
-
-# Cache
-/cache/
-/tmp/
-.tmp/
-
-# Testes
+# PHPUnit
 /coverage/
-/test-results.xml
-/testdox.html
-/testdox.txt
-.phpunit.cache/
+.phpunit.result.cache
 
-# IDEs
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
 # OS
 .DS_Store
 Thumbs.db
 
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Certificates (production)
+/certificados/*.pem
+/certificados/*.crt
+/certificados/*.key
+
 # Build
 /build/
 /dist/
 
-# Composer
-composer.lock
-composer.phar
-
-# PHP
-*.php~
-*.php.bak
-
-# Backup
-*.bak
-*.backup
-
-# Arquivos temporários
-*.tmp
-*.temp
-
-# Relatórios
-/reports/
-/docs/build/
-
-# Configurações locais
-config.local.php
-settings.local.php 
+# Cache
+/cache/
+/tmp/ 

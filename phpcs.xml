@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<ruleset name="Sicoob SDK PHP">
+    <description>Sicoob SDK PHP Coding Standards</description>
+
+    <!-- Scan these files and directories -->
+    <file>src/</file>
+    <file>tests/</file>
+    <file>exemplos/</file>
+
+    <!-- Ignore these files and directories -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+
+    <!-- Show progress -->
+    <arg value="p"/>
+
+    <!-- Show sniff codes in all reports -->
+    <arg value="s"/>
+
+    <!-- Show colors -->
+    <arg value="n"/>
+
+    <!-- Use PSR-12 as a base -->
+    <rule ref="PSR12"/>
+
+    <!-- Allow . in hook names -->
+    <rule ref="PSR2.Methods.MethodDeclaration.Underscore">
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+
+    <!-- Allow array() syntax for PHP 5.6 compatibility -->
+    <rule ref="Generic.Arrays.DisallowShortArraySyntax">
+        <exclude-pattern>*/src/*</exclude-pattern>
+        <exclude-pattern>*/tests/*</exclude-pattern>
+        <exclude-pattern>*/exemplos/*</exclude-pattern>
+    </rule>
+
+    <!-- Allow short array syntax for PHP 5.6 compatibility -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax">
+        <exclude-pattern>*/src/*</exclude-pattern>
+        <exclude-pattern>*/tests/*</exclude-pattern>
+        <exclude-pattern>*/exemplos/*</exclude-pattern>
+    </rule>
+
+    <!-- Show source codes in all reports -->
+    <arg value="s"/>
+
+    <!-- Show colors -->
+    <arg value="n"/>
+
+    <!-- Show sniff codes in all reports -->
+    <arg value="s"/>
+</ruleset> 

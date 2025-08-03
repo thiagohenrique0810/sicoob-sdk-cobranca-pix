@@ -1,0 +1,59 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+DEVELOPMENT_CHECKLIST.md
+docs/
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Build artifacts
+coverage/
+vendor/
+node_modules/
+
+# Test files
+tests/
+phpunit.xml
+.phpunit.result.cache
+
+# Code quality
+.php_cs
+phpcs.xml
+.prettierrc
+
+# CI/CD
+.github/
+.github/workflows/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Certificates (sensitive)
+certificados/
+*.pem
+*.crt
+*.key
+
+# Temporary files
+tmp/
+cache/ 

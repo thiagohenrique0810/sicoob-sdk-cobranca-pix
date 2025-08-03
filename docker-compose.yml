@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  sicoob-sdk:
+    build: .
+    container_name: sicoob-sdk-php
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/www/html
+      - ./certificados:/var/www/html/certificados
+    environment:
+      - PHP_VERSION=5.6
+    command: php -S 0.0.0.0:8000 -t /var/www/html
+
+  sicoob-sdk-dev:
+    build: .
+    container_name: sicoob-sdk-php-dev
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/var/www/html
+      - ./certificados:/var/www/html/certificados
+    environment:
+      - PHP_VERSION=5.6
+      - COMPOSER_ALLOW_SUPERUSER=1
+    command: >
+      sh -c "composer install &&
+              php -S 0.0.0.0:8000 -t /var/www/html"
+
+  sicoob-sdk-test:
+    build: .
+    container_name: sicoob-sdk-php-test
+    volumes:
+      - .:/var/www/html
+    environment:
+      - PHP_VERSION=5.6
+      - COMPOSER_ALLOW_SUPERUSER=1
+    command: >
+      sh -c "composer install &&
+              vendor/bin/phpunit"
+
+  sicoob-sdk-cs:
+    build: .
+    container_name: sicoob-sdk-php-cs
+    volumes:
+      - .:/var/www/html
+    environment:
+      - PHP_VERSION=5.6
+      - COMPOSER_ALLOW_SUPERUSER=1
+    command: >
+      sh -c "composer install &&
+              vendor/bin/phpcs src/ tests/ exemplos/" 
