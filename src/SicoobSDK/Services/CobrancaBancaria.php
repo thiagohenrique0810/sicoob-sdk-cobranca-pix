@@ -51,7 +51,14 @@ class CobrancaBancaria
      */
     public function consultarBoletos($params = array())
     {
-        return $this->client->get($this->baseEndpoint . '/boletos', $params);
+        // Para listar boletos, precisamos usar o endpoint de pagadores
+        // Se não houver CPF/CNPJ nos parâmetros, usamos um CPF fictício para sandbox
+        $cpfCnpj = isset($params['cpfCnpj']) ? $params['cpfCnpj'] : '12345678901';
+        
+        // Remove cpfCnpj dos parâmetros pois ele vai na URL
+        unset($params['cpfCnpj']);
+        
+        return $this->client->get($this->baseEndpoint . '/pagadores/' . $cpfCnpj . '/boletos', $params);
     }
 
     /**

@@ -13,6 +13,7 @@
 - [x] **RESOLVIDO**: Configuração SSL para ambiente sandbox
 - [x] **RESOLVIDO**: Autoload dos testes corrigido
 - [x] **RESOLVIDO**: Configuração PHPUnit atualizada
+- [x] **RESOLVIDO**: Endpoint de consulta de boletos corrigido
 
 ## 🏗️ Estrutura do Projeto
 - [x] Criar `composer.json` com dependências PHP 5.6
