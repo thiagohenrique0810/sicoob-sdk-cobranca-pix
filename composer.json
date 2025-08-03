@@ -1,6 +1,6 @@
 {
     "name": "sicoob/sdk-cobranca-pix",
-    "description": "SDK em PHP 5.6 para integração com as APIs do banco Sicoob, focado em cobranças bancárias (boletos) e pagamentos PIX",
+    "description": "SDK PHP para integração com as APIs de Cobrança Bancária e PIX do Sicoob",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,27 +11,34 @@
     ],
     "keywords": [
         "sicoob",
-        "boleto",
-        "pix",
         "cobranca",
-        "banco",
-        "php",
-        "sdk"
+        "pix",
+        "boleto",
+        "api",
+        "sdk",
+        "php"
     ],
     "homepage": "https://github.com/sicoob/sdk-cobranca-pix",
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.4",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-openssl": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^9.5",
+        "phpunit/php-code-coverage": "^9.2",
+        "phpstan/phpstan": "^1.4",
+        "squizlabs/php_codesniffer": "^3.6",
+        "phpcompatibility/php-compatibility": "^9.3"
     },
     "autoload": {
         "psr-4": {
             "SicoobSDK\\": "src/SicoobSDK/"
-        }
+        },
+        "files": [
+            "src/autoload.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -40,13 +47,44 @@
     },
     "scripts": {
         "test": "phpunit",
-        "test-unit": "php tests/Unit/CobrancaServiceTest.php",
-        "example": "php examples/cobranca-example.php"
+        "test:unit": "phpunit --testsuite \"Unit Tests\"",
+        "test:integration": "phpunit --testsuite \"Integration Tests\"",
+        "test:coverage": "phpunit --coverage-html coverage/",
+        "test:coverage-text": "phpunit --coverage-text",
+        "test:verbose": "phpunit --verbose --testdox",
+        "test:parallel": "phpunit --parallel",
+        "cs": "phpcs --standard=PSR12 src/ tests/",
+        "cs:fix": "phpcbf --standard=PSR12 src/ tests/",
+        "stan": "phpstan analyse src/",
+        "stan:baseline": "phpstan analyse --generate-baseline src/",
+        "check": [
+            "@cs",
+            "@stan",
+            "@test"
+        ],
+        "ci": [
+            "@cs",
+            "@stan",
+            "@test:coverage"
+        ]
     },
     "config": {
         "optimize-autoloader": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/sicoob/sdk-cobranca-pix/issues",
+        "source": "https://github.com/sicoob/sdk-cobranca-pix",
+        "docs": "https://github.com/sicoob/sdk-cobranca-pix/blob/main/README.md"
+    }
 } 

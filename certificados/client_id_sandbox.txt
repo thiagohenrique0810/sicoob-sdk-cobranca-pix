@@ -1,0 +1,2 @@
+Client ID: 9b5e603e428cc477a2841e2683c92d21
+Access token (Bearer): 1301865f-c6bc-38f3-9f49-666dbcfc59c3
